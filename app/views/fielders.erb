@@ -1,0 +1,12 @@
+<table>
+<% @master.each do |player| %>
+  <tr>
+    <td><%= player.playerID %></td>
+    <td><%= player.birthYear %></td>
+    <td><%= player.birthMonth %></td>
+    <td><%= player.birthDay %></td>
+    <td><%= player.birthCountry %></td>
+    <td><%= player.birthState %></td>
+    <td><%= player.birthCity %></td>
+<% end %>
+</table>
