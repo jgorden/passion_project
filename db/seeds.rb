@@ -55,3 +55,61 @@ CSV.readlines("db/lahman-csv_2015-01-24/Batting.csv", headers:true).each do |lin
     gidp: line[21]
   )
 end
+
+CSV.readlines("db/lahman-csv_2015-01-24/Pitching.csv", headers:true).each do |line|
+  Pitcher.create(
+    playerID: line[0],
+    yearID: line[1],
+    stint: line[2],
+    teamID: line[3],
+    lgID: line[4],
+    w: line[5],
+    l: line[6],
+    g: line[7],
+    gs: line[8],
+    cg: line[9],
+    sho: line[10],
+    sv: line[11],
+    ipouts: line[12],
+    h: line[13],
+    er: line[14],
+    hr: line[15],
+    bb: line[16],
+    so: line[17],
+    baopp: line[18],
+    era: line[19],
+    ibb: line[20],
+    wp: line[21],
+    hbp: line[22],
+    bk: line[23],
+    bfp: line[24],
+    gf: line[25],
+    r: line[26],
+    sh: line[27],
+    sf: line[28],
+    gidp: line[29]
+  )
+end
+
+CSV.readlines("db/lahman-csv_2015-01-24/Fielding.csv", headers:true).each do |line|
+  Fielder.create(
+    playerID:
+    yearID:
+    stint:
+    teamID:
+    lgID:
+    pos:
+    g:
+    gs:
+    innouts:
+    po:
+    a:
+    e:
+    dp:
+    pb:
+    wp:
+    sb:
+    cs:
+    zr:
+  )
+end

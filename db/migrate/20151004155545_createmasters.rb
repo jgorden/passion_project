@@ -1,7 +1,7 @@
 class Createmasters < ActiveRecord::Migration
   def change
     create_table :masters do |t|
-      t.integer :playerID
+      t.string :playerID
       t.integer :birthYear
       t.integer :birthMonth
       t.integer :birthDay

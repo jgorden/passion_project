@@ -1,7 +1,7 @@
 class Createbatters < ActiveRecord::Migration
   def change
     create_table :batters do |t|
-      t.integer :playerID
+      t.string :playerID
       t.integer :yearID
       t.integer :stint
       t.string :teamID
