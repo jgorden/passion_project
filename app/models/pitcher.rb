@@ -1,3 +1,3 @@
 class Pitcher < ActiveRecord::Base
-  # Remember to create a migration!
+  belongs_to :master, foreign_key: :masterID
 end

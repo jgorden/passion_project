@@ -1,3 +1,4 @@
 class Fielder < ActiveRecord::Base
-  # Remember to create a migration!
+  belongs_to :master, foreign_key: :playerID
+  # belongs_to :batter, foreign_key: :playerID
 end

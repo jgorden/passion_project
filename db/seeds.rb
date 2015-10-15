@@ -29,35 +29,37 @@ CSV.readlines("db/lahman-csv_2015-01-24/Master.csv", headers:true).each do |line
   )
 end
 
-CSV.readlines("db/lahman-csv_2015-01-24/Batting.csv", headers:true).each do |line|
-  Batter.create(
-    playerID: line[0],
-    yearID: line[1],
-    stint: line[2],
-    teamID: line[3],
-    lgID: line[4],
-    g: line[5],
-    ab: line[6],
-    r: line[7],
-    h: line[8],
-    double: line[9],
-    triple: line[10],
-    hr: line[11],
-    rbi: line[12],
-    sb: line[13],
-    cs: line[14],
-    bb: line[15],
-    so: line[16],
-    ibb: line[17],
-    hbp: line[18],
-    sh: line[19],
-    sf: line[20],
-    gidp: line[21]
-  )
-end
+# CSV.readlines("db/lahman-csv_2015-01-24/Batting.csv", headers:true).each do |line|
+#   Batter.create(
+#     playerID: line[0],
+#     yearID: line[1],
+#     stint: line[2],
+#     teamID: line[3],
+#     lgID: line[4],
+#     g: line[5],
+#     ab: line[6],
+#     r: line[7],
+#     h: line[8],
+#     double: line[9],
+#     triple: line[10],
+#     hr: line[11],
+#     rbi: line[12],
+#     sb: line[13],
+#     cs: line[14],
+#     bb: line[15],
+#     so: line[16],
+#     ibb: line[17],
+#     hbp: line[18],
+#     sh: line[19],
+#     sf: line[20],
+#     gidp: line[21]
+#   )
+# end
 
 CSV.readlines("db/lahman-csv_2015-01-24/Pitching.csv", headers:true).each do |line|
-  Pitcher.create(
+  master = Master.find_by(playerID: line[0])
+
+  master.pitchers.create(
     playerID: line[0],
     yearID: line[1],
     stint: line[2],
@@ -91,25 +93,25 @@ CSV.readlines("db/lahman-csv_2015-01-24/Pitching.csv", headers:true).each do |li
   )
 end
 
-CSV.readlines("db/lahman-csv_2015-01-24/Fielding.csv", headers:true).each do |line|
-  Fielder.create(
-    playerID:
-    yearID:
-    stint:
-    teamID:
-    lgID:
-    pos:
-    g:
-    gs:
-    innouts:
-    po:
-    a:
-    e:
-    dp:
-    pb:
-    wp:
-    sb:
-    cs:
-    zr:
-  )
-end
+# CSV.readlines("db/lahman-csv_2015-01-24/Fielding.csv", headers:true).each do |line|
+#   Fielder.create(
+#     playerID: line[0],
+#     yearID: line[1],
+#     stint: line[2],
+#     teamID: line[3],
+#     lgID: line[4],
+#     pos: line[5],
+#     g: line[6],
+#     gs: line[7],
+#     innouts: line[8],
+#     po: line[9],
+#     a: line[10],
+#     e: line[11],
+#     dp: line[12],
+#     pb: line[13],
+#     wp: line[14],
+#     sb: line[15],
+#     cs: line[16],
+#     zr: line[17]
+#   )
+# end

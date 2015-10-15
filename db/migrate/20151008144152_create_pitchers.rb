@@ -31,6 +31,7 @@ class CreatePitchers < ActiveRecord::Migration
       t.integer :sh
       t.integer :sf
       t.integer :gidp
+      t.belongs_to :master, foreign_key: :playerID
     end
   end
 end

@@ -1,3 +1,5 @@
 class Master < ActiveRecord::Base
-  # Remember to create a migration!
+  # has_many :batters, primary_key: :playerID
+  # has_many :fielders, primary_key: :playerID
+  has_many :pitchers, foreign_key: :playerID
 end

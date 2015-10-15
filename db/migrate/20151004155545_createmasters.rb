@@ -1,4 +1,4 @@
-class Createmasters < ActiveRecord::Migration
+   class Createmasters < ActiveRecord::Migration
   def change
     create_table :masters do |t|
       t.string :playerID
