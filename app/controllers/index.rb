@@ -19,20 +19,27 @@ post '/players/:id/charts' do
   year = master.pitchers.find_by(yearID: params[:year])
   all = Pitcher.where(yearID: params[:year])
   starters = all.where('ipouts > ?', 210)
-  collection = []
+  fields = [params[:field1], params[:field2], params[:field3], params[:field4], params[:field5]]
+  result = []
+  fields.each do |field|
+    collection = []
 
-  starters.each do |pitcher|
-    collection << pitcher[params[:field1]]
+    starters.each do |pitcher|
+      collection << pitcher[field]
+    end
+
+    negative = ['l', 'h', 'er', 'hr', 'bb', 'baopp', 'era', 'ibb', 'wp', 'hbp', 'bk', 'r', 'sf']
+    r = (year[field] - starters.average(field).to_f)/standard_deviation(collection, starters.average(field).to_f)
+
+    if negative.include?(field)
+      r = -r
+    end
+
+    result << r
   end
-  p '*'*143
-  p collection
-  p starters.average(params[:field1]).to_f
-  p standard_deviation(collection, starters.average(params[:field1]).to_f)
-  p '*'*143
-  p (year[params[:field1]] - starters.average(params[:field1]).to_f)/standard_deviation(collection, starters.average(params[:field1]).to_f)
-  max = starters.order("#{params[:field1]} DESC").first[params[:field1]]
-  min = starters.order("#{params[:field1]} ASC").first[params[:field1]]
-  { player_data: {"#{params[:field1]}" => year[params[:field1]], "#{params[:field2]}" => year[params[:field2]], "#{params[:field3]}" => year[params[:field3]], "#{params[:field4]}" => year[params[:field4]], "#{params[:field5]}" => year[params[:field5]]}, average: [starters.average(params[:field1]).to_f, starters.average(params[:field2]).to_f, starters.average(params[:field3]).to_f, starters.average(params[:field4]).to_f, starters.average(params[:field5]).to_f]}.to_json
+
+  p result
+  { player_data: {"#{params[:field1]}" => result[0], "#{params[:field2]}" => result[1], "#{params[:field3]}" => result[2], "#{params[:field4]}" => result[3], "#{params[:field5]}" => result[4]}, average: [starters.average(params[:field1]).to_f, starters.average(params[:field2]).to_f, starters.average(params[:field3]).to_f, starters.average(params[:field4]).to_f, starters.average(params[:field5]).to_f]}.to_json
   # p all.average(params[:field5]).to_f
 end
 

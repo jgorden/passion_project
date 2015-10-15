@@ -7,9 +7,9 @@ $(document).ready(function () {
     datasets: [
       {
         label: "My First dataset",
-        fillColor: "rgba(220,220,220,0.2)",
-        strokeColor: "rgba(220,220,220,1)",
-        pointColor: "rgba(220,220,220,1)",
+        fillColor: "rgba(151,187,205,0.2)",
+        strokeColor: "rgba(151,187,205,1)",
+        pointColor: "rgba(151,187,205,1)",
         pointStrokeColor: "#fff",
         pointHighlightFill: "#fff",
         pointHighlightStroke: "rgba(220,220,220,1)",
@@ -17,13 +17,13 @@ $(document).ready(function () {
       },
       {
         label: "My Second dataset",
-        fillColor: "rgba(151,187,205,0.2)",
-        strokeColor: "rgba(151,187,205,1)",
-        pointColor: "rgba(151,187,205,1)",
+        fillColor: "rgba(220,220,220,0.2)",
+        strokeColor: "rgba(220,220,220,1)",
+        pointColor: "rgba(220,220,220,1)",
         pointStrokeColor: "#fff",
         pointHighlightFill: "#fff",
         pointHighlightStroke: "rgba(151,187,205,1)",
-        data: []
+        data: [0,0,0,0,0]
       }
     ]
   };
@@ -54,7 +54,7 @@ $(document).ready(function () {
     pointLabelFontStyle : "normal",
 
     //Number - Point label font size in pixels
-    pointLabelFontSize : 10,
+    pointLabelFontSize : 25,
 
     //String - Point label font colour
     pointLabelFontColor : "#666",
@@ -99,7 +99,7 @@ $(document).ready(function () {
         data.labels.push(field)
         data.datasets[0].data.push(value)
       }
-      data.datasets[1].data = response.average
+      // data.datasets[1].data = response.average
 
       console.log(data.labels)
       console.log(data.datasets[0].data)

@@ -2,33 +2,35 @@
 <table>
     <tr>
       <td>Year</td>
-      <td>teamID</td>
-      <td>lgID</td>
-      <td>w</td>
-      <td>l</td>
-      <td>g</td>
-      <td>gs</td>
-      <td>cg</td>
-      <td>sho</td>
-      <td>sv</td>
-      <td>ipouts</td>
-      <td>h</td>
-      <td>er</td>
-      <td>hr</td>
-      <td>bb</td>
-      <td>so</td>
-      <td>baopp</td>
-      <td>era</td>
-      <td>ibb</td>
-      <td>wp</td>
-      <td>hbp</td>
-      <td>bk</td>
-      <td>bfp</td>
-      <td>gf</td>
-      <td>r</td>
-      <td>sh</td>
-      <td>sf</td>
-      <td>gidp</td>
+      <td>Team</td>
+      <td>lg</td>
+      <td>W</td>
+      <td>L</td>
+      <td>G</td>
+      <td>GS</td>
+      <td>CG</td>
+      <td>SHO</td>
+      <td>SV</td>
+      <td>IP</td>
+      <td>H</td>
+      <td>ER</td>
+      <td>HR</td>
+      <td>BB</td>
+      <td>SO</td>
+      <td>K/9</td>
+      <td>BB/9</td>
+      <td>Opp BA</td>
+      <td>ERA</td>
+      <td>iBB</td>
+      <td>WP</td>
+      <td>HBP</td>
+      <td>Balk</td>
+      <td>Batters Faced</td>
+      <td>Games Finished</td>
+      <td>R</td>
+      <td>SH</td>
+      <td>SF</td>
+      <td>GIDP</td>
     </tr>
 <% @master.pitchers.each do |pitcher| %>
     <tr>
@@ -42,12 +44,14 @@
       <td><%= pitcher.cg %></td>
       <td><%= pitcher.sho %></td>
       <td><%= pitcher.sv %></td>
-      <td><%= pitcher.ipouts %></td>
+      <td><%= pitcher.ipouts / 3 %></td>
       <td><%= pitcher.h %></td>
       <td><%= pitcher.er %></td>
       <td><%= pitcher.hr %></td>
       <td><%= pitcher.bb %></td>
       <td><%= pitcher.so %></td>
+      <td><%= ((pitcher.so.to_f / (pitcher.ipouts.to_f / 3.0)).to_f * 9.0).round(2) %></td>
+      <td><%= ((pitcher.bb / (pitcher.ipouts / 3.0)).to_f * 9.0).round(2) %></td>
       <td><%= pitcher.baopp %></td>
       <td><%= pitcher.era %></td>
       <td><%= pitcher.ibb %></td>
@@ -83,6 +87,7 @@
     <option value='er'>er</option>
     <option value='hr'>hr</option>
     <option value='bb'>bb</option>
+    <option value='so'>so</option>
     <option value='so'>so</option>
     <option value='baopp'>baopp</option>
     <option value='era'>era</option>

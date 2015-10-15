@@ -59,7 +59,7 @@ end
 CSV.readlines("db/lahman-csv_2015-01-24/Pitching.csv", headers:true).each do |line|
   master = Master.find_by(playerID: line[0])
 
-  master.pitchers.create(
+  season = master.pitchers.new(
     playerID: line[0],
     yearID: line[1],
     stint: line[2],
@@ -91,6 +91,9 @@ CSV.readlines("db/lahman-csv_2015-01-24/Pitching.csv", headers:true).each do |li
     sf: line[28],
     gidp: line[29]
   )
+  season(k_nine: ((season.so.to_f / (season.ipouts.to_f / 3.0)).to_f * 9.0))
+  season(bb_nine: ((season.bb.to_f / (season.ipouts.to_f / 3.0)).to_f * 9.0))
+  season.save
 end
 
 # CSV.readlines("db/lahman-csv_2015-01-24/Fielding.csv", headers:true).each do |line|
