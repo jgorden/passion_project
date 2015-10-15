@@ -84,4 +84,17 @@ $(document).ready(function () {
     legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
   }
   var myRadarChart = new Chart(ctx).Radar(data, options);
+
+  $('form').submit(function(e){
+    e.preventDefault();
+    console.log('hey')
+    $.ajax({
+      url: '/players/' + $('p').text() + '/charts',
+      type: 'post',
+      data: $('form').serialize(),
+      dataType: 'json'
+    }).done(function(data){
+      console.log(data)
+    })
+  })
 });

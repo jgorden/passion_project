@@ -1,0 +1,216 @@
+<h2><%= @master.nameFirst + ' ' + @master.nameLast%></h2><br>
+<table>
+    <tr>
+      <td>Year</td>
+      <td>teamID</td>
+      <td>lgID</td>
+      <td>w</td>
+      <td>l</td>
+      <td>g</td>
+      <td>gs</td>
+      <td>cg</td>
+      <td>sho</td>
+      <td>sv</td>
+      <td>ipouts</td>
+      <td>h</td>
+      <td>er</td>
+      <td>hr</td>
+      <td>bb</td>
+      <td>so</td>
+      <td>baopp</td>
+      <td>era</td>
+      <td>ibb</td>
+      <td>wp</td>
+      <td>hbp</td>
+      <td>bk</td>
+      <td>bfp</td>
+      <td>gf</td>
+      <td>r</td>
+      <td>sh</td>
+      <td>sf</td>
+      <td>gidp</td>
+    </tr>
+<% @master.pitchers.each do |pitcher| %>
+    <tr>
+      <td><%= pitcher.yearID %></td>
+      <td><%= pitcher.teamID %></td>
+      <td><%= pitcher.lgID %></td>
+      <td><%= pitcher.w %></td>
+      <td><%= pitcher.l %></td>
+      <td><%= pitcher.g %></td>
+      <td><%= pitcher.gs %></td>
+      <td><%= pitcher.cg %></td>
+      <td><%= pitcher.sho %></td>
+      <td><%= pitcher.sv %></td>
+      <td><%= pitcher.ipouts %></td>
+      <td><%= pitcher.h %></td>
+      <td><%= pitcher.er %></td>
+      <td><%= pitcher.hr %></td>
+      <td><%= pitcher.bb %></td>
+      <td><%= pitcher.so %></td>
+      <td><%= pitcher.baopp %></td>
+      <td><%= pitcher.era %></td>
+      <td><%= pitcher.ibb %></td>
+      <td><%= pitcher.wp %></td>
+      <td><%= pitcher.hbp %></td>
+      <td><%= pitcher.bk %></td>
+      <td><%= pitcher.bfp %></td>
+      <td><%= pitcher.gf %></td>
+      <td><%= pitcher.r %></td>
+      <td><%= pitcher.sh %></td>
+      <td><%= pitcher.sf %></td>
+      <td><%= pitcher.gidp %></td>
+    </tr>
+  <% end %>
+</table>
+
+<form method='post' action='/charts'>
+  <select name='year'>
+    <% @master.pitchers.each do |year| %>
+      <option value='<%= year.yearID %>'><%= year.yearID %></option>
+    <% end %>
+  </select>
+  <select name='field1'>
+    <option value='w'>w</option>
+    <option value='l'>l</option>
+    <option value='g'>g</option>
+    <option value='gs'>gs</option>
+    <option value='cg'>cg</option>
+    <option value='sho'>sho</option>
+    <option value='sv'>sv</option>
+    <option value='ipouts'>ipouts</option>
+    <option value='h'>h</option>
+    <option value='er'>er</option>
+    <option value='hr'>hr</option>
+    <option value='bb'>bb</option>
+    <option value='so'>so</option>
+    <option value='baopp'>baopp</option>
+    <option value='era'>era</option>
+    <option value='ibb'>ibb</option>
+    <option value='wp'>wp</option>
+    <option value='hbp'>hbp</option>
+    <option value='bk'>bk</option>
+    <option value='bfp'>bfp</option>
+    <option value='gf'>gf</option>
+    <option value='r'>r</option>
+    <option value='sh'>sh</option>
+    <option value='sf'>sf</option>
+    <option value='gidp'>gidp</option>
+  </select>
+  <select name='field2'>
+    <option value='w'>w</option>
+    <option value='l'>l</option>
+    <option value='g'>g</option>
+    <option value='gs'>gs</option>
+    <option value='cg'>cg</option>
+    <option value='sho'>sho</option>
+    <option value='sv'>sv</option>
+    <option value='ipouts'>ipouts</option>
+    <option value='h'>h</option>
+    <option value='er'>er</option>
+    <option value='hr'>hr</option>
+    <option value='bb'>bb</option>
+    <option value='so'>so</option>
+    <option value='baopp'>baopp</option>
+    <option value='era'>era</option>
+    <option value='ibb'>ibb</option>
+    <option value='wp'>wp</option>
+    <option value='hbp'>hbp</option>
+    <option value='bk'>bk</option>
+    <option value='bfp'>bfp</option>
+    <option value='gf'>gf</option>
+    <option value='r'>r</option>
+    <option value='sh'>sh</option>
+    <option value='sf'>sf</option>
+    <option value='gidp'>gidp</option>
+  </select>
+  <select name='field3'>
+    <option value='w'>w</option>
+    <option value='l'>l</option>
+    <option value='g'>g</option>
+    <option value='gs'>gs</option>
+    <option value='cg'>cg</option>
+    <option value='sho'>sho</option>
+    <option value='sv'>sv</option>
+    <option value='ipouts'>ipouts</option>
+    <option value='h'>h</option>
+    <option value='er'>er</option>
+    <option value='hr'>hr</option>
+    <option value='bb'>bb</option>
+    <option value='so'>so</option>
+    <option value='baopp'>baopp</option>
+    <option value='era'>era</option>
+    <option value='ibb'>ibb</option>
+    <option value='wp'>wp</option>
+    <option value='hbp'>hbp</option>
+    <option value='bk'>bk</option>
+    <option value='bfp'>bfp</option>
+    <option value='gf'>gf</option>
+    <option value='r'>r</option>
+    <option value='sh'>sh</option>
+    <option value='sf'>sf</option>
+    <option value='gidp'>gidp</option>
+  </select>
+    <select name='field4'>
+    <option value='w'>w</option>
+    <option value='l'>l</option>
+    <option value='g'>g</option>
+    <option value='gs'>gs</option>
+    <option value='cg'>cg</option>
+    <option value='sho'>sho</option>
+    <option value='sv'>sv</option>
+    <option value='ipouts'>ipouts</option>
+    <option value='h'>h</option>
+    <option value='er'>er</option>
+    <option value='hr'>hr</option>
+    <option value='bb'>bb</option>
+    <option value='so'>so</option>
+    <option value='baopp'>baopp</option>
+    <option value='era'>era</option>
+    <option value='ibb'>ibb</option>
+    <option value='wp'>wp</option>
+    <option value='hbp'>hbp</option>
+    <option value='bk'>bk</option>
+    <option value='bfp'>bfp</option>
+    <option value='gf'>gf</option>
+    <option value='r'>r</option>
+    <option value='sh'>sh</option>
+    <option value='sf'>sf</option>
+    <option value='gidp'>gidp</option>
+  </select>
+    <select name='field5'>
+    <option value='w'>w</option>
+    <option value='l'>l</option>
+    <option value='g'>g</option>
+    <option value='gs'>gs</option>
+    <option value='cg'>cg</option>
+    <option value='sho'>sho</option>
+    <option value='sv'>sv</option>
+    <option value='ipouts'>ipouts</option>
+    <option value='h'>h</option>
+    <option value='er'>er</option>
+    <option value='hr'>hr</option>
+    <option value='bb'>bb</option>
+    <option value='so'>so</option>
+    <option value='baopp'>baopp</option>
+    <option value='era'>era</option>
+    <option value='ibb'>ibb</option>
+    <option value='wp'>wp</option>
+    <option value='hbp'>hbp</option>
+    <option value='bk'>bk</option>
+    <option value='bfp'>bfp</option>
+    <option value='gf'>gf</option>
+    <option value='r'>r</option>
+    <option value='sh'>sh</option>
+    <option value='sf'>sf</option>
+    <option value='gidp'>gidp</option>
+  </select>
+  <input type='submit' value='MAKE A CHART'>
+</form>
+<br>
+
+<canvas class='hidden' id="myChart" width="400" height="400"></canvas>
+
+
+
+<p class='hidden'><%= @master.id %></p>

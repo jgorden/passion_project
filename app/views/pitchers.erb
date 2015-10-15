@@ -1,0 +1,66 @@
+<table>
+    <tr>
+      <td>Last Name</td>
+      <td>First Name</td>
+      <td>teamID</td>
+      <td>lgID</td>
+      <td>w</td>
+      <td>l</td>
+      <td>g</td>
+      <td>gs</td>
+      <td>cg</td>
+      <td>sho</td>
+      <td>sv</td>
+      <td>ipouts</td>
+      <td>h</td>
+      <td>er</td>
+      <td>hr</td>
+      <td>bb</td>
+      <td>so</td>
+      <td>baopp</td>
+      <td>era</td>
+      <td>ibb</td>
+      <td>wp</td>
+      <td>hbp</td>
+      <td>bk</td>
+      <td>bfp</td>
+      <td>gf</td>
+      <td>r</td>
+      <td>sh</td>
+      <td>sf</td>
+      <td>gidp</td>
+    </tr>
+  <% @pitchers.each do |pitcher| %>
+    <tr>
+      <td><a href='/player/<%= pitcher.master.id %>'><%= pitcher.master.nameLast %></a></td>
+      <td><%= pitcher.master.nameFirst %></td>
+      <td><%= pitcher.teamID %></td>
+      <td><%= pitcher.lgID %></td>
+      <td><%= pitcher.w %></td>
+      <td><%= pitcher.l %></td>
+      <td><%= pitcher.g %></td>
+      <td><%= pitcher.gs %></td>
+      <td><%= pitcher.cg %></td>
+      <td><%= pitcher.sho %></td>
+      <td><%= pitcher.sv %></td>
+      <td><%= pitcher.ipouts %></td>
+      <td><%= pitcher.h %></td>
+      <td><%= pitcher.er %></td>
+      <td><%= pitcher.hr %></td>
+      <td><%= pitcher.bb %></td>
+      <td><%= pitcher.so %></td>
+      <td><%= pitcher.baopp %></td>
+      <td><%= pitcher.era %></td>
+      <td><%= pitcher.ibb %></td>
+      <td><%= pitcher.wp %></td>
+      <td><%= pitcher.hbp %></td>
+      <td><%= pitcher.bk %></td>
+      <td><%= pitcher.bfp %></td>
+      <td><%= pitcher.gf %></td>
+      <td><%= pitcher.r %></td>
+      <td><%= pitcher.sh %></td>
+      <td><%= pitcher.sf %></td>
+      <td><%= pitcher.gidp %></td>
+    </tr>
+  <% end %>
+</table>
