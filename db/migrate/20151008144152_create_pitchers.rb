@@ -19,6 +19,8 @@ class CreatePitchers < ActiveRecord::Migration
       t.integer :hr
       t.integer :bb
       t.integer :so
+      t.float :k_nine
+      t.float :bb_nine
       t.float :baopp
       t.float :era
       t.integer :ibb

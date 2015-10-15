@@ -49,8 +49,8 @@
       <td><%= pitcher.hr %></td>
       <td><%= pitcher.bb %></td>
       <td><%= pitcher.so %></td>
-      <td><%= ((pitcher.so.to_f / (pitcher.ipouts.to_f / 3.0)).to_f * 9.0).round(2) %></td>
-      <td><%= ((pitcher.bb / (pitcher.ipouts / 3.0)).to_f * 9.0).round(2) %></td>
+      <td><%= pitcher.k_nine.round(2) %></td>
+      <td><%= pitcher.bb_nine.round(2) %></td>
       <td><%= pitcher.baopp %></td>
       <td><%= pitcher.era %></td>
       <td><%= pitcher.ibb %></td>

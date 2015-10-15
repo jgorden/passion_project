@@ -28,7 +28,7 @@ post '/players/:id/charts' do
       collection << pitcher[field]
     end
 
-    negative = ['l', 'h', 'er', 'hr', 'bb', 'baopp', 'era', 'ibb', 'wp', 'hbp', 'bk', 'r', 'sf']
+    negative = ['l', 'h', 'er', 'hr', 'bb', 'baopp', 'era', 'ibb', 'wp', 'hbp', 'bk', 'r', 'sf', 'bb_nine']
     r = (year[field] - starters.average(field).to_f)/standard_deviation(collection, starters.average(field).to_f)
 
     if negative.include?(field)
