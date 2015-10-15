@@ -32,7 +32,7 @@
     </tr>
   <% @pitchers.each do |pitcher| %>
     <tr>
-      <td><a href='/player/<%= pitcher.master.id %>'><%= pitcher.master.nameLast %></a></td>
+      <td><a href='/players/<%= pitcher.master.id %>'><%= pitcher.master.nameLast %></a></td>
       <td><%= pitcher.master.nameFirst %></td>
       <td><%= pitcher.teamID %></td>
       <td><%= pitcher.lgID %></td>

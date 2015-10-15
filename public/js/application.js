@@ -3,7 +3,7 @@ $(document).ready(function () {
   var ctx = canvas.getContext("2d");
   // var myNewChart = new Chart(ctx).PolarArea(data);
   var data = {
-    labels: ["Eating", "Drinking", "Sleeping", "Designing", "Coding", "Cycling", "Running"],
+    labels: [],
     datasets: [
       {
         label: "My First dataset",
@@ -13,7 +13,7 @@ $(document).ready(function () {
         pointStrokeColor: "#fff",
         pointHighlightFill: "#fff",
         pointHighlightStroke: "rgba(220,220,220,1)",
-        data: [65, 59, 90, 81, 56, 55, 40]
+        data: []
       },
       {
         label: "My Second dataset",
@@ -23,7 +23,7 @@ $(document).ready(function () {
         pointStrokeColor: "#fff",
         pointHighlightFill: "#fff",
         pointHighlightStroke: "rgba(151,187,205,1)",
-        data: [28, 48, 40, 19, 96, 27, 100]
+        data: []
       }
     ]
   };
@@ -39,7 +39,7 @@ $(document).ready(function () {
     scaleShowLabels : false,
 
     // Boolean - Whether the scale should begin at zero
-    scaleBeginAtZero : true,
+    scaleBeginAtZero : false,
 
     //String - Colour of the angle line
     angleLineColor : "rgba(0,0,0,.1)",
@@ -83,18 +83,27 @@ $(document).ready(function () {
     //String - A legend template
     legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
   }
-  var myRadarChart = new Chart(ctx).Radar(data, options);
 
   $('form').submit(function(e){
     e.preventDefault();
-    console.log('hey')
     $.ajax({
       url: '/players/' + $('p').text() + '/charts',
       type: 'post',
       data: $('form').serialize(),
       dataType: 'json'
-    }).done(function(data){
-      console.log(data)
+    }).done(function(response){
+      console.log(response)
+      $('#myChart').removeClass('hidden');
+      for (var field in response.player_data){
+        var value = response.player_data[field]
+        data.labels.push(field)
+        data.datasets[0].data.push(value)
+      }
+      data.datasets[1].data = response.average
+
+      console.log(data.labels)
+      console.log(data.datasets[0].data)
+  var myRadarChart = new Chart(ctx).Radar(data, options);
     })
   })
 });
