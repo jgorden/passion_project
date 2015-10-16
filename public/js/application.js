@@ -87,7 +87,7 @@ $(document).ready(function () {
   $('form').submit(function(e){
     e.preventDefault();
     $.ajax({
-      url: '/players/' + $('p').text() + '/charts',
+      url: '/players/pitchers/' + $('p').text() + '/charts',
       type: 'post',
       data: $('form').serialize(),
       dataType: 'json'

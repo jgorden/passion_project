@@ -5,7 +5,7 @@ get '/' do
 end
 
 get '/tables/fielders' do
-  @batters = Batter.where(year: 2014)
+  @batters = Batter.where("ab > ? AND year = ?",20,2014)
   erb :batters
 end
 
@@ -55,7 +55,12 @@ get '/charts' do
   erb :chart
 end
 
-get '/players/pitcher/:id' do
+get '/players/pitchers/:id' do
   @master = Master.find(params[:id])
   erb :pitcher_page
+end
+
+get '/players/batters/:id' do
+  @master = Master.find(params[:id])
+  erb :batter_page
 end
