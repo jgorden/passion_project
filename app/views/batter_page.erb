@@ -1,0 +1,193 @@
+<div class='container'>
+<h2><%= @master.nameFirst + ' ' + @master.nameLast%></h2><br>
+<table class="table">
+    <tr>
+      <td>Team</td>
+      <td>lg</td>
+      <td>G</td>
+      <td>AB</td>
+      <td>R</td>
+      <td>H</td>
+      <td>2b</td>
+      <td>3b</td>
+      <td>HR</td>
+      <td>RBI</td>
+      <td>SB</td>
+      <td>CS</td>
+      <td>BB</td>
+      <td>SO</td>
+      <td>iBB</td>
+      <td>HBP</td>
+      <td>SH</td>
+      <td>SF</td>
+      <td>GIDP</td>
+      <td>AVG</td>
+      <td>OBP</td>
+      <td>SLG</td>
+    </tr>
+<% @master.batters.each do |batter| %>
+    <tr>
+      <td><%= batter.year %></td>
+      <td><%= batter.teamID %></td>
+      <td><%= batter.g %></td>
+      <td><%= batter.ab %></td>
+      <td><%= batter.r %></td>
+      <td><%= batter.h %></td>
+      <td><%= batter.double %></td>
+      <td><%= batter.triple %></td>
+      <td><%= batter.hr %></td>
+      <td><%= batter.rbi %></td>
+      <td><%= batter.sb %></td>
+      <td><%= batter.cs %></td>
+      <td><%= batter.bb %></td>
+      <td><%= batter.so %></td>
+      <td><%= batter.ibb %></td>
+      <td><%= batter.hbp %></td>
+      <td><%= batter.sh %></td>
+      <td><%= batter.sf %></td>
+      <td><%= batter.gidp %></td>
+      <td>
+        <% if batter.avg %>
+          <%= batter.avg.round(3) %>
+        <% end %>
+      </td>
+      <td>
+        <% if batter.avg %>
+          <%= batter.obp.round(3) %></td>
+        <% end %>
+      <td>
+        <% if batter.slg %>
+          <%= batter.slg.round(3) %></td>
+        <% end %>
+    </tr>
+  <% end %>
+</table>
+</div>
+<div class='container'>
+<form id='batter' method='post' action='/charts'>
+  <select name='year'>
+    <% @master.batters.each do |year| %>
+      <option value='<%= year.year %>'><%= year.year %></option>
+    <% end %>
+  </select>
+  <select name='field1'>
+    <option value='g'>G</option>
+    <option value='ab'>AB</option>
+    <option value='r'>R</option>
+    <option value='h'>H</option>
+    <option value='double'>2b</option>
+    <option value='triple'>3b</option>
+    <option value='hr'>HR</option>
+    <option value='rbi'>RBI</option>
+    <option value='sb'>SB</option>
+    <option value='cs'>CS</option>
+    <option value='bb'>BB</option>
+    <option value='so'>SO</option>
+    <option value='ibb'>iBB</option>
+    <option value='hbp'>HBP</option>
+    <option value='sh'>SH</option>
+    <option value='sf'>SF</option>
+    <option value='gidp'>GIDP</option>
+    <option value='avg'>AVG</option>
+    <option value='obp'>OBP</option>
+    <option value='slg'>SLG</option>
+  </select>
+  <select name='field2'>
+    <option value='g'>G</option>
+    <option value='ab'>AB</option>
+    <option value='r'>R</option>
+    <option value='h'>H</option>
+    <option value='double'>2b</option>
+    <option value='triple'>3b</option>
+    <option value='hr'>HR</option>
+    <option value='rbi'>RBI</option>
+    <option value='sb'>SB</option>
+    <option value='cs'>CS</option>
+    <option value='bb'>BB</option>
+    <option value='so'>SO</option>
+    <option value='ibb'>iBB</option>
+    <option value='hbp'>HBP</option>
+    <option value='sh'>SH</option>
+    <option value='sf'>SF</option>
+    <option value='gidp'>GIDP</option>
+    <option value='avg'>AVG</option>
+    <option value='obp'>OBP</option>
+    <option value='slg'>SLG</option>
+  </select>
+  <select name='field3'>
+    <option value='g'>G</option>
+    <option value='ab'>AB</option>
+    <option value='r'>R</option>
+    <option value='h'>H</option>
+    <option value='double'>2b</option>
+    <option value='triple'>3b</option>
+    <option value='hr'>HR</option>
+    <option value='rbi'>RBI</option>
+    <option value='sb'>SB</option>
+    <option value='cs'>CS</option>
+    <option value='bb'>BB</option>
+    <option value='so'>SO</option>
+    <option value='ibb'>iBB</option>
+    <option value='hbp'>HBP</option>
+    <option value='sh'>SH</option>
+    <option value='sf'>SF</option>
+    <option value='gidp'>GIDP</option>
+    <option value='avg'>AVG</option>
+    <option value='obp'>OBP</option>
+    <option value='slg'>SLG</option>
+  </select>
+  <select name='field4'>
+    <option value='g'>G</option>
+    <option value='ab'>AB</option>
+    <option value='r'>R</option>
+    <option value='h'>H</option>
+    <option value='double'>2b</option>
+    <option value='triple'>3b</option>
+    <option value='hr'>HR</option>
+    <option value='rbi'>RBI</option>
+    <option value='sb'>SB</option>
+    <option value='cs'>CS</option>
+    <option value='bb'>BB</option>
+    <option value='so'>SO</option>
+    <option value='ibb'>iBB</option>
+    <option value='hbp'>HBP</option>
+    <option value='sh'>SH</option>
+    <option value='sf'>SF</option>
+    <option value='gidp'>GIDP</option>
+    <option value='avg'>AVG</option>
+    <option value='obp'>OBP</option>
+    <option value='slg'>SLG</option>
+  </select>
+  <select name='field5'>
+    <option value='g'>G</option>
+    <option value='ab'>AB</option>
+    <option value='r'>R</option>
+    <option value='h'>H</option>
+    <option value='double'>2b</option>
+    <option value='triple'>3b</option>
+    <option value='hr'>HR</option>
+    <option value='rbi'>RBI</option>
+    <option value='sb'>SB</option>
+    <option value='cs'>CS</option>
+    <option value='bb'>BB</option>
+    <option value='so'>SO</option>
+    <option value='ibb'>iBB</option>
+    <option value='hbp'>HBP</option>
+    <option value='sh'>SH</option>
+    <option value='sf'>SF</option>
+    <option value='gidp'>GIDP</option>
+    <option value='avg'>AVG</option>
+    <option value='obp'>OBP</option>
+    <option value='slg'>SLG</option>
+  </select>
+  <input type='submit' value='MAKE A CHART'>
+</form>
+</div>
+<br>
+<div class='container'>
+  <canvas class='hidden' id="myChart" width="400" height="400"></canvas>
+</div>
+
+
+<p class='hidden'><%= @master.id %></p>
+

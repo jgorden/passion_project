@@ -1,0 +1,91 @@
+<form method='post' action='/tables/pitchers'>
+      <select name='year'>
+        <% count = 2014 %>
+          <% while count > 1871 do %>
+            <option value='<%= count %>'><%= count %></option>
+            <% count -= 1 %>
+          <% end %>
+      </select>
+      <input type='submit' value='Go'>
+</form>
+
+<table class='table'>
+    <tr>
+      <td>Last Name</td>
+      <td>First Name</td>
+      <td>Team</td>
+      <td>lg</td>
+      <td>W</td>
+      <td>L</td>
+      <td>G</td>
+      <td>GS</td>
+      <td>CG</td>
+      <td>SHO</td>
+      <td>SV</td>
+      <td>IP</td>
+      <td>H</td>
+      <td>ER</td>
+      <td>HR</td>
+      <td>BB</td>
+      <td>SO</td>
+      <td>K/9</td>
+      <td>BB/9</td>
+      <td>Opp BA</td>
+      <td>ERA</td>
+      <td>iBB</td>
+      <td>WP</td>
+      <td>HBP</td>
+      <td>Balk</td>
+      <td>Batters Faced</td>
+      <td>Games Finished</td>
+      <td>R</td>
+      <td>SH</td>
+      <td>SF</td>
+      <td>GIDP</td>
+    </tr>
+  <% @pitchers.each do |pitcher| %>
+    <tr>
+      <td><a href='/players/pitchers/<%= pitcher.master.id %>'><%= pitcher.master.nameLast %></a></td>
+      <td><%= pitcher.master.nameFirst %></td>
+      <td><%= pitcher.teamID %></td>
+      <td><%= pitcher.lgID %></td>
+      <td><%= pitcher.w %></td>
+      <td><%= pitcher.l %></td>
+      <td><%= pitcher.g %></td>
+      <td><%= pitcher.gs %></td>
+      <td><%= pitcher.cg %></td>
+      <td><%= pitcher.sho %></td>
+      <td><%= pitcher.sv %></td>
+      <td><% if pitcher.ipouts %>
+            <%= pitcher.ipouts / 3 %>
+          <% end %>
+      </td>
+      <td><%= pitcher.h %></td>
+      <td><%= pitcher.er %></td>
+      <td><%= pitcher.hr %></td>
+      <td><%= pitcher.bb %></td>
+      <td><%= pitcher.so %></td>
+      <td><% if pitcher.k_nine %>
+            <%= pitcher.k_nine.round(2) %>
+            <%  end %>
+      </td>
+      <td>
+            <% if pitcher.bb_nine %>
+                  <%= pitcher.bb_nine.round(2) %>
+            <% end %>
+      </td>
+      <td><%= pitcher.baopp %></td>
+      <td><%= pitcher.era %></td>
+      <td><%= pitcher.ibb %></td>
+      <td><%= pitcher.wp %></td>
+      <td><%= pitcher.hbp %></td>
+      <td><%= pitcher.bk %></td>
+      <td><%= pitcher.bfp %></td>
+      <td><%= pitcher.gf %></td>
+      <td><%= pitcher.r %></td>
+      <td><%= pitcher.sh %></td>
+      <td><%= pitcher.sf %></td>
+      <td><%= pitcher.gidp %></td>
+    </tr>
+  <% end %>
+</table>
