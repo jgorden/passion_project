@@ -1,4 +1,5 @@
-<table>
+<%= @pitchers %>
+<table class='table'>
     <tr>
       <td>Last Name</td>
       <td>First Name</td>
@@ -17,6 +18,8 @@
       <td>HR</td>
       <td>BB</td>
       <td>SO</td>
+      <td>K/9</td>
+      <td>BB/9</td>
       <td>Opp BA</td>
       <td>ERA</td>
       <td>iBB</td>
@@ -43,7 +46,10 @@
       <td><%= pitcher.cg %></td>
       <td><%= pitcher.sho %></td>
       <td><%= pitcher.sv %></td>
-      <td><%= pitcher.ipouts / 3%></td>
+      <td><% if pitcher.ipouts %>
+            <%= pitcher.ipouts / 3 %>
+          <% end %>
+      </td>
       <td><%= pitcher.h %></td>
       <td><%= pitcher.er %></td>
       <td><%= pitcher.hr %></td>

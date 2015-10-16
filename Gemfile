@@ -8,8 +8,8 @@ gem 'sinatra'
 gem 'sinatra-contrib'
 gem 'thin'
 
-gem 'activesupport', "~>4.1"
-gem 'activerecord', "~>4.1"
+gem 'activesupport', "~>4.2.4"
+gem 'activerecord', "~>4.2.4"
 
 gem 'rake'
 gem 'bcrypt-ruby'

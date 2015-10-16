@@ -1,9 +1,9 @@
-.container {
+/*.container {
   margin: 20px auto;
   width: 800px;
   padding: 0px 20px 20px 20px;
   border: 1px dotted black;
-}
+}*/
 
 .container h1 {
   font-size: 17pt;
@@ -76,4 +76,14 @@ form.quirks {
 
 .hidden {
   visibility: hidden;
+}
+
+td {
+  padding-left: 10px;
+  border-left: solid gray 1px;
+  border-right: solid gray 1px;
+}
+
+tr:hover{
+ background-color: #D7F3F5;
 }

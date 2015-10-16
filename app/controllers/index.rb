@@ -10,14 +10,24 @@ get '/tables/fielders' do
 end
 
 get '/tables/pitchers' do
-  @pitchers = Pitcher.where(yearID: 2014)
+  @pitchers = Pitcher.where(year: 2014)
+  erb :pitchers
+end
+
+get '/tables/pitchers/relievers' do
+  @pitchers = Pitcher.where("ipouts < ? AND year = ?",210,2014)
+  erb :pitchers
+end
+
+get '/tables/pitchers/starters' do
+  @pitchers = Pitcher.where("ipouts > ? AND year = ?",210,2014)
   erb :pitchers
 end
 
 post '/players/:id/charts' do
   master = Master.find(params[:id])
-  year = master.pitchers.find_by(yearID: params[:year])
-  all = Pitcher.where(yearID: params[:year])
+  year = master.pitchers.find_by(year: params[:year])
+  all = Pitcher.where(year: params[:year])
   starters = all.where('ipouts > ?', 210)
   fields = [params[:field1], params[:field2], params[:field3], params[:field4], params[:field5]]
   result = []
@@ -38,9 +48,7 @@ post '/players/:id/charts' do
     result << r
   end
 
-  p result
   { player_data: {"#{params[:field1]}" => result[0], "#{params[:field2]}" => result[1], "#{params[:field3]}" => result[2], "#{params[:field4]}" => result[3], "#{params[:field5]}" => result[4]}, average: [starters.average(params[:field1]).to_f, starters.average(params[:field2]).to_f, starters.average(params[:field3]).to_f, starters.average(params[:field4]).to_f, starters.average(params[:field5]).to_f]}.to_json
-  # p all.average(params[:field5]).to_f
 end
 
 get '/charts' do

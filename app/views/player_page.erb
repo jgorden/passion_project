@@ -1,5 +1,6 @@
+<div class='container'>
 <h2><%= @master.nameFirst + ' ' + @master.nameLast%></h2><br>
-<table>
+<table class="table">
     <tr>
       <td>Year</td>
       <td>Team</td>
@@ -34,7 +35,7 @@
     </tr>
 <% @master.pitchers.each do |pitcher| %>
     <tr>
-      <td><%= pitcher.yearID %></td>
+      <td><%= pitcher.year %></td>
       <td><%= pitcher.teamID %></td>
       <td><%= pitcher.lgID %></td>
       <td><%= pitcher.w %></td>
@@ -67,11 +68,12 @@
     </tr>
   <% end %>
 </table>
-
+</div>
+<div class='container'>
 <form method='post' action='/charts'>
   <select name='year'>
     <% @master.pitchers.each do |year| %>
-      <option value='<%= year.yearID %>'><%= year.yearID %></option>
+      <option value='<%= year.year %>'><%= year.year %></option>
     <% end %>
   </select>
   <select name='field1'>
@@ -221,6 +223,7 @@
   </select>
   <input type='submit' value='MAKE A CHART'>
 </form>
+</div>
 <br>
 
 <canvas class='hidden' id="myChart" width="400" height="400"></canvas>
