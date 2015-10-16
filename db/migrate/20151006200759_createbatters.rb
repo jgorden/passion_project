@@ -23,6 +23,9 @@ class Createbatters < ActiveRecord::Migration
       t.integer :sh
       t.integer :sf
       t.integer :gidp
+      t.float :avg
+      t.float :obp
+      t.float :slg
       t.belongs_to :master, foreign_key: :playerID
     end
   end

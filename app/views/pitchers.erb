@@ -1,3 +1,14 @@
+<form method='post' action='/tables/pitchers'>
+      <select name='year'>
+        <% count = 2014 %>
+          <% while count > 1871 do %>
+            <option value='<%= count %>'><%= count %></option>
+            <% count -= 1 %>
+          <% end %>
+      </select>
+      <input type='submit' value='Go'>
+</form>
+
 <table class='table'>
     <tr>
       <td>Last Name</td>
@@ -54,8 +65,15 @@
       <td><%= pitcher.hr %></td>
       <td><%= pitcher.bb %></td>
       <td><%= pitcher.so %></td>
-      <td><%= pitcher.k_nine.round(2) %></td>
-      <td><%= pitcher.bb_nine.round(2) %></td>
+      <td><% if pitcher.k_nine %>
+            <%= pitcher.k_nine.round(2) %>
+            <%  end %>
+      </td>
+      <td>
+            <% if pitcher.bb_nine %>
+                  <%= pitcher.bb_nine.round(2) %>
+            <% end %>
+      </td>
       <td><%= pitcher.baopp %></td>
       <td><%= pitcher.era %></td>
       <td><%= pitcher.ibb %></td>

@@ -58,6 +58,13 @@ CSV.readlines("db/lahman-csv_2015-01-24/Batting.csv", headers:true).each do |lin
   )
 end
 
+Batter.all.each do |bat|
+  bat.update_attributes(avg: bat.h.to_f/(bat.ab.to_f + bat.sh.to_f + bat.sf.to_f), obp: (bat.h.to_f + bat.bb.to_f + bat.ibb.to_f + bat.hbp.to_f)/(bat.ab.to_f + bat.sh.to_f + bat.sf.to_f))
+  if bat.double && bat.triple && bat.hr
+    bat.update_attributes(slg: ((bat.h - bat.double - bat.triple - bat.hr)+(bat.double * 2)+(bat.triple * 3)+(bat.hr * 4)).to_f/((bat.ab.to_f + bat.sh.to_f + bat.sf.to_f)))
+  end
+end
+
 CSV.readlines("db/lahman-csv_2015-01-24/Pitching.csv", headers:true).each do |line|
   master = Master.find_by(playerID: line[0])
 

@@ -51,8 +51,16 @@
       <td><%= pitcher.hr %></td>
       <td><%= pitcher.bb %></td>
       <td><%= pitcher.so %></td>
-      <td><%= pitcher.k_nine.round(2) %></td>
-      <td><%= pitcher.bb_nine.round(2) %></td>
+      <td>
+        <% if pitcher.k_nine %>
+          <%= pitcher.k_nine.round(2) %>
+        <%  end %>
+      </td>
+      <td>
+        <% if pitcher.bb_nine %>
+          <%= pitcher.bb_nine.round(2) %>
+        <% end %>
+      </td>
       <td><%= pitcher.baopp %></td>
       <td><%= pitcher.era %></td>
       <td><%= pitcher.ibb %></td>
@@ -70,7 +78,7 @@
 </table>
 </div>
 <div class='container'>
-<form method='post' action='/charts'>
+<form id='pitcher' method='post' action='/charts'>
   <select name='year'>
     <% @master.pitchers.each do |year| %>
       <option value='<%= year.year %>'><%= year.year %></option>
@@ -192,7 +200,7 @@
     <option value='sf'>SF</option>
     <option value='gidp'>GIDP</option>
   </select>
-    <select name='field5'>
+  <select name='field5'>
     <option value='w'>W</option>
     <option value='l'>L</option>
     <option value='g'>G</option>
@@ -226,8 +234,9 @@
 </div>
 <br>
 
-<canvas class='hidden' id="myChart" width="400" height="400"></canvas>
-
+<div class='container'>
+  <canvas class='hidden' id="myChart" width="400" height="400"></canvas>
+</div>
 
 
 <p class='hidden'><%= @master.id %></p>

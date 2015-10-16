@@ -1,3 +1,14 @@
+<form method='post' action='/tables/batters'>
+      <select name='year'>
+        <% count = 2014 %>
+          <% while count > 1871 do %>
+            <option value='<%= count %>'><%= count %></option>
+            <% count -= 1 %>
+          <% end %>
+      </select>
+      <input type='submit' value='Go'>
+</form>
+
 <table class='table'>
     <tr>
       <td>Last Name</td>
@@ -48,6 +59,9 @@
       <td><%= batter.sh %></td>
       <td><%= batter.sf %></td>
       <td><%= batter.gidp %></td>
+      <td><%= batter.avg.round(3) %></td>
+      <td><%= batter.obp.round(3) %></td>
+      <td><%= batter.slg.round(3) %></td>
     </tr>
   <% end %>
 </table>

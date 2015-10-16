@@ -84,12 +84,30 @@ $(document).ready(function () {
     legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
   }
 
-  $('form').submit(function(e){
+  $('#pitcher').submit(function(e){
     e.preventDefault();
     $.ajax({
       url: '/players/pitchers/' + $('p').text() + '/charts',
       type: 'post',
-      data: $('form').serialize(),
+      data: $('#pitcher').serialize(),
+      dataType: 'json'
+    }).done(function(response){
+      $('#myChart').removeClass('hidden');
+      for (var field in response.player_data){
+        var value = response.player_data[field]
+        data.labels.push(field)
+        data.datasets[0].data.push(value)
+      }
+      var myRadarChart = new Chart(ctx).Radar(data, options);
+    })
+  })
+
+  $('#batter').submit(function(e){
+    e.preventDefault();
+    $.ajax({
+      url: '/players/batters/' + $('p').text() + '/charts',
+      type: 'post',
+      data: $('#batter').serialize(),
       dataType: 'json'
     }).done(function(response){
       console.log(response)
@@ -103,7 +121,7 @@ $(document).ready(function () {
 
       console.log(data.labels)
       console.log(data.datasets[0].data)
-  var myRadarChart = new Chart(ctx).Radar(data, options);
+      var myRadarChart = new Chart(ctx).Radar(data, options);
     })
   })
 });
