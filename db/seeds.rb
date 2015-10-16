@@ -29,39 +29,41 @@ CSV.readlines("db/lahman-csv_2015-01-24/Master.csv", headers:true).each do |line
   )
 end
 
-# CSV.readlines("db/lahman-csv_2015-01-24/Batting.csv", headers:true).each do |line|
-#   Batter.create(
-#     playerID: line[0],
-#     yearID: line[1],
-#     stint: line[2],
-#     teamID: line[3],
-#     lgID: line[4],
-#     g: line[5],
-#     ab: line[6],
-#     r: line[7],
-#     h: line[8],
-#     double: line[9],
-#     triple: line[10],
-#     hr: line[11],
-#     rbi: line[12],
-#     sb: line[13],
-#     cs: line[14],
-#     bb: line[15],
-#     so: line[16],
-#     ibb: line[17],
-#     hbp: line[18],
-#     sh: line[19],
-#     sf: line[20],
-#     gidp: line[21]
-#   )
-# end
+CSV.readlines("db/lahman-csv_2015-01-24/Batting.csv", headers:true).each do |line|
+  master = Master.find_by(playerID: line[0])
+
+  master.batters.create(
+    playerID: line[0],
+    year: line[1],
+    stint: line[2],
+    teamID: line[3],
+    lgID: line[4],
+    g: line[5],
+    ab: line[6],
+    r: line[7],
+    h: line[8],
+    double: line[9],
+    triple: line[10],
+    hr: line[11],
+    rbi: line[12],
+    sb: line[13],
+    cs: line[14],
+    bb: line[15],
+    so: line[16],
+    ibb: line[17],
+    hbp: line[18],
+    sh: line[19],
+    sf: line[20],
+    gidp: line[21]
+  )
+end
 
 CSV.readlines("db/lahman-csv_2015-01-24/Pitching.csv", headers:true).each do |line|
   master = Master.find_by(playerID: line[0])
 
   master.pitchers.create(
     playerID: line[0],
-    yearID: line[1],
+    year: line[1],
     stint: line[2],
     teamID: line[3],
     lgID: line[4],

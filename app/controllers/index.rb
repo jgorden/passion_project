@@ -5,8 +5,8 @@ get '/' do
 end
 
 get '/tables/fielders' do
-  @master = Master.all
-  erb :fielders
+  @batters = Batter.where(year: 2014)
+  erb :batters
 end
 
 get '/tables/pitchers' do
@@ -24,7 +24,7 @@ get '/tables/pitchers/starters' do
   erb :pitchers
 end
 
-post '/players/:id/charts' do
+post '/players/pitchers/:id/charts' do
   master = Master.find(params[:id])
   year = master.pitchers.find_by(year: params[:year])
   all = Pitcher.where(year: params[:year])
@@ -55,7 +55,7 @@ get '/charts' do
   erb :chart
 end
 
-get '/players/:id' do
+get '/players/pitcher/:id' do
   @master = Master.find(params[:id])
-  erb :player_page
+  erb :pitcher_page
 end

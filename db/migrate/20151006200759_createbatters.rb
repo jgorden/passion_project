@@ -2,7 +2,7 @@ class Createbatters < ActiveRecord::Migration
   def change
     create_table :batters do |t|
       t.string :playerID
-      t.integer :yearID
+      t.integer :year
       t.integer :stint
       t.string :teamID
       t.string :lgID
@@ -23,6 +23,7 @@ class Createbatters < ActiveRecord::Migration
       t.integer :sh
       t.integer :sf
       t.integer :gidp
+      t.belongs_to :master, foreign_key: :playerID
     end
   end
 end

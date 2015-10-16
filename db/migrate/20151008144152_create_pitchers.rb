@@ -2,7 +2,7 @@ class CreatePitchers < ActiveRecord::Migration
   def change
     create_table :pitchers do |t|
       t.string :playerID
-      t.integer :yearID
+      t.integer :year
       t.integer :stint
       t.string :teamID
       t.string :lgID

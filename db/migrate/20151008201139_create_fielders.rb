@@ -2,7 +2,7 @@ class CreateFielders < ActiveRecord::Migration
   def change
     create_table :fielders do |t|
       t.string :playerID
-      t.integer :yearID
+      t.integer :year
       t.integer :stint
       t.string :teamID
       t.integer :lgID

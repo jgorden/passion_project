@@ -1,4 +1,3 @@
-<%= @pitchers %>
 <table class='table'>
     <tr>
       <td>Last Name</td>
@@ -35,7 +34,7 @@
     </tr>
   <% @pitchers.each do |pitcher| %>
     <tr>
-      <td><a href='/players/<%= pitcher.master.id %>'><%= pitcher.master.nameLast %></a></td>
+      <td><a href='/players/pitchers/<%= pitcher.master.id %>'><%= pitcher.master.nameLast %></a></td>
       <td><%= pitcher.master.nameFirst %></td>
       <td><%= pitcher.teamID %></td>
       <td><%= pitcher.lgID %></td>

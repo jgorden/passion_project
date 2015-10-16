@@ -1,0 +1,66 @@
+<table class='table'>
+    <tr>
+      <td>Last Name</td>
+      <td>First Name</td>
+      <td>Team</td>
+      <td>lg</td>
+      <td>G</td>
+      <td>AB</td>
+      <td>R</td>
+      <td>H</td>
+      <td>2b</td>
+      <td>3b</td>
+      <td>HR</td>
+      <td>RBI</td>
+      <td>SB</td>
+      <td>CS</td>
+      <td>BB</td>
+      <td>SO</td>
+      <td>iBB</td>
+      <td>HBP</td>
+      <td>SH</td>
+      <td>SF</td>
+      <td>GIDP</td>
+      <td>AVG</td>
+      <td>OBP</td>
+      <td>SLG</td>
+    </tr>
+  <% @batters.each do |batter| %>
+    <tr>
+      <td><a href='/players/batters/<%= batter.master.id %>'><%= batter.master.nameLast %></a></td>
+      <td><%= batter.master.nameFirst %></td>
+      <td><%= batter.teamID %></td>
+      <td><%= batter.lgID %></td>
+      <td><%= batter.w %></td>
+      <td><%= batter.l %></td>
+      <td><%= batter.g %></td>
+      <td><%= batter.gs %></td>
+      <td><%= batter.cg %></td>
+      <td><%= batter.sho %></td>
+      <td><%= batter.sv %></td>
+      <td><% if batter.ipouts %>
+            <%= batter.ipouts / 3 %>
+          <% end %>
+      </td>
+      <td><%= batter.h %></td>
+      <td><%= batter.er %></td>
+      <td><%= batter.hr %></td>
+      <td><%= batter.bb %></td>
+      <td><%= batter.so %></td>
+      <td><%= batter.k_nine.round(2) %></td>
+      <td><%= batter.bb_nine.round(2) %></td>
+      <td><%= batter.baopp %></td>
+      <td><%= batter.era %></td>
+      <td><%= batter.ibb %></td>
+      <td><%= batter.wp %></td>
+      <td><%= batter.hbp %></td>
+      <td><%= batter.bk %></td>
+      <td><%= batter.bfp %></td>
+      <td><%= batter.gf %></td>
+      <td><%= batter.r %></td>
+      <td><%= batter.sh %></td>
+      <td><%= batter.sf %></td>
+      <td><%= batter.gidp %></td>
+    </tr>
+  <% end %>
+</table>
